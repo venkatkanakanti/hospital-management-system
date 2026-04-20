@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doctors List</title>
+</head>
+<body style="text-align:center; font-family:Arial; background:#eefaff;">
+
+<h1>📋 Doctors List</h1>
+
+<table border="1" align="center" cellpadding="10">
+<tr>
+    <th>Name</th>
+    <th>Specialization</th>
+    <th>Phone</th>
+    <th>Action</th>
+</tr>
+
+{% for doctor in doctors %}
+<tr>
+    <td>{{ doctor.name }}</td>
+    <td>{{ doctor.specialization }}</td>
+    <td>{{ doctor.phone }}</td>
+    <td>
+        <a href="/delete_doctor/{{ doctor.id }}/">
+            <button style="color:red;">Delete</button>
+        </a>
+    </td>
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Doctor</title>
+</head>
+<body style="text-align:center; font-family:Arial; background:#fff0f0;">
+
+<h1>👨‍⚕️ Add Doctor</h1>
+
+{% if success %}
+<p style="color:green;">{{ success }}</p>
+{% endif %}
+
+{% if error %}
+<p style="color:red;">{{ error }}</p>
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Doctor Name"><br><br>
+    <input type="text" name="specialization" placeholder="Specialization"><br><br>
+    <input type="text" name="phone" placeholder="Phone Number"><br><br>
+    <button type="submit">Save</button>
+</form>
+
+</body>
+</html>

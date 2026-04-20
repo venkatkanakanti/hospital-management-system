@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patients List</title>
+</head>
+<body style="text-align:center; font-family:Arial; background:#fffaf0;">
+
+<h1>📋 Patients List</h1>
+
+<table border="1" align="center" cellpadding="10">
+<tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Disease</th>
+</tr>
+
+{% for patient in patients %}
+<tr>
+    <td>{{ patient.name }}</td>
+    <td>{{ patient.age }}</td>
+    <td>{{ patient.disease }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>
