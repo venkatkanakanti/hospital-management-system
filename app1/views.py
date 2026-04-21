@@ -94,5 +94,10 @@ def add_appointment(request):
     return render(request, 'add_appointment.html')
 
 
+def view_appointments(request):
+    appointments = Appointment.objects.all()
+    return render(request, 'view_appointments.html', {'appointments': appointments})
+
+
 def logout(request):
     return render(request, 'adminlogin.html')
