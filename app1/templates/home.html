@@ -1,68 +1,125 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Welcome</title>
+<title>Hospital Management System</title>
 
 <style>
-body{
-font-family:Arial;
+*{
 margin:0;
 padding:0;
-text-align:center;
-background:linear-gradient(to right,#c2e9fb,#a1c4fd);
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
-.header{
-padding:40px;
+body{
+background:#f4f9ff;
 }
 
-h1{
-font-size:52px;
-font-weight:bold;
-background:linear-gradient(90deg,#ff0080,#7928ca,#007cf0);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-margin-bottom:10px;
-}
-
-h3{
-color:#222;
-font-size:20px;
-margin-bottom:25px;
-}
-
-button{
-padding:14px 28px;
-border:none;
-border-radius:12px;
-background:#0077b6;
+/* Navbar */
+.navbar{
+background:#003366;
+padding:18px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
 color:white;
-cursor:pointer;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+}
+
+.nav-links a{
+color:white;
+text-decoration:none;
+margin-left:25px;
 font-size:18px;
 font-weight:bold;
-box-shadow:0 8px 15px rgba(0,0,0,0.2);
 transition:0.3s;
 }
 
-button:hover{
+.nav-links a:hover{
+color:#00d4ff;
+}
+
+/* Hero Section */
+.hero{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:70px 60px;
+background:linear-gradient(135deg,#c2e9fb,#a1c4fd);
+flex-wrap:wrap;
+}
+
+.hero-text{
+max-width:600px;
+}
+
+.hero-text h1{
+font-size:58px;
+color:#003366;
+margin-bottom:20px;
+}
+
+.hero-text p{
+font-size:22px;
+color:#333;
+margin-bottom:30px;
+line-height:1.6;
+}
+
+.btn{
+display:inline-block;
+padding:14px 28px;
+background:#0077b6;
+color:white;
+text-decoration:none;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+transition:0.3s;
+}
+
+.btn:hover{
 background:#023e8a;
 transform:scale(1.05);
+}
+
+.hero img{
+width:450px;
+max-width:100%;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Services */
+.section-title{
+text-align:center;
+font-size:42px;
+color:#003366;
+margin:60px 0 30px;
 }
 
 .features{
 display:flex;
 justify-content:center;
 flex-wrap:wrap;
-margin-top:35px;
+gap:25px;
+padding:0 30px;
 }
 
 .card{
 background:white;
-width:220px;
-margin:15px;
-padding:22px;
+width:250px;
+padding:25px;
 border-radius:18px;
-box-shadow:0 8px 18px rgba(0,0,0,0.15);
+box-shadow:0 8px 18px rgba(0,0,0,0.12);
+text-align:center;
 transition:0.3s;
 }
 
@@ -72,162 +129,136 @@ transform:translateY(-10px);
 
 .card h2{
 color:#003366;
+margin-bottom:12px;
 }
 
-.card p{
-font-size:17px;
+/* About */
+.about{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:40px;
+padding:70px 40px;
+flex-wrap:wrap;
 }
 
-/* About Us */
-.about-section{
-margin-top:60px;
-padding:40px 20px;
-text-align:center;
+.about img{
+width:420px;
+max-width:100%;
+border-radius:18px;
+box-shadow:0 10px 22px rgba(0,0,0,0.18);
 }
 
-.about-section h2{
-font-size:38px;
+.about-text{
+max-width:550px;
+}
+
+.about-text h2{
+font-size:42px;
 color:#003366;
 margin-bottom:20px;
 }
 
-.about-section p{
-font-size:18px;
-max-width:900px;
-margin:auto;
+.about-text p{
+font-size:20px;
 line-height:1.7;
 color:#333;
 }
 
-.about-boxes{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:25px;
-margin-top:35px;
-}
-
-.about-card{
-background:white;
-width:280px;
-padding:25px;
-border-radius:18px;
-box-shadow:0 8px 18px rgba(0,0,0,0.15);
-transition:0.3s;
-}
-
-.about-card:hover{
-transform:translateY(-8px);
-}
-
-.about-card h3{
-color:#003366;
-margin-bottom:10px;
-}
-
 /* Footer */
 .footer{
-margin-top:60px;
-padding:35px 20px;
 background:#003366;
 color:white;
 text-align:center;
+padding:35px 20px;
+margin-top:50px;
 }
 
 .footer h2{
 margin-bottom:15px;
-font-size:32px;
+font-size:30px;
 }
 
 .footer p{
 margin:8px 0;
 font-size:18px;
 }
-
-.footer hr{
-width:60%;
-margin:20px auto;
-border:1px solid rgba(255,255,255,0.3);
-}
 </style>
 </head>
 
 <body>
 
-<div class="header">
-<h1>🏥 Welcome to Hospital Management System</h1>
-<h3>Your Health, Our Priority</h3>
+<!-- Navbar -->
+<div class="navbar">
+<div class="logo">🏥 HMS</div>
 
-<a href="/adminlogin/">
-<button>🔐 Admin Login</button>
-</a>
+<div class="nav-links">
+<a href="#">Home</a>
+<a href="#services">Services</a>
+<a href="#about">About</a>
+<a href="/adminlogin/">Admin</a>
 </div>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+
+<div class="hero-text">
+<h1>Welcome to Hospital Management System</h1>
+<p>Your Health, Our Priority. Modern healthcare management with appointments, doctors, patients and emergency support.</p>
+
+<a href="/adminlogin/" class="btn">🔐 Admin Login</a>
+</div>
+
+<img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=900" alt="Hospital">
+
+</div>
+
+<!-- Services -->
+<h2 class="section-title" id="services">Our Services</h2>
 
 <div class="features">
 
 <div class="card">
 <h2>🚑 Ambulance</h2>
-<p>24/7 Emergency Service</p>
+<p>24/7 emergency services.</p>
 </div>
 
 <div class="card">
 <h2>💊 Medicines</h2>
-<p>All Essential Medicines Available</p>
+<p>All essential medicines available.</p>
 </div>
 
 <div class="card">
 <h2>👨‍⚕️ Doctors</h2>
-<p>Experienced Specialists</p>
+<p>Experienced specialists.</p>
 </div>
 
 <div class="card">
 <h2>🧑 Patients</h2>
-<p>Quality Care & Records</p>
-</div>
-
-<div class="card">
-<h2>🛏️ Rooms</h2>
-<p>Comfortable Rooms & Beds</p>
-</div>
-
-<div class="card">
-<h2>📞 Support</h2>
-<p>24/7 Help Desk</p>
+<p>Safe records and care.</p>
 </div>
 
 </div>
 
-<div class="about-section">
+<!-- About -->
+<div class="about" id="about">
 
-<h2>🏥 About Us</h2>
+<img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900" alt="Doctors">
+
+<div class="about-text">
+<h2>About Us</h2>
 
 <p>
-Welcome to Hospital Management System. We are dedicated to providing
-quality healthcare services with modern technology and efficient management.
-Our system helps manage doctors, patients, appointments, emergency support,
-and hospital records with ease.
+We are dedicated to providing quality healthcare with modern digital solutions.
+Our Hospital Management System helps manage doctors, patients, appointments,
+records, and emergency support efficiently.
 </p>
-
-<div class="about-boxes">
-
-<div class="about-card">
-<h3>👨‍⚕️ Expert Doctors</h3>
-<p>Highly qualified specialists for better treatment.</p>
-</div>
-
-<div class="about-card">
-<h3>📅 Easy Appointments</h3>
-<p>Quick appointment booking with doctors.</p>
-</div>
-
-<div class="about-card">
-<h3>💙 24/7 Care</h3>
-<p>Emergency and support services available anytime.</p>
 </div>
 
 </div>
-</div>
 
+<!-- Footer -->
 <div class="footer">
 
 <h2>🏥 Hospital Management System</h2>
@@ -235,9 +266,6 @@ and hospital records with ease.
 <p>📍 Tirupati, Andhra Pradesh</p>
 <p>📞 +91 98765 43210</p>
 <p>📧 support@hospital.com</p>
-
-<hr>
-
 <p>© 2026 All Rights Reserved | Designed by Venkata Ramana</p>
 
 </div>
