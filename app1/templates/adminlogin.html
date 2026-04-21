@@ -1,51 +1,101 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Login</title>
+<title>Admin Login</title>
 
-    <style>
-        body{
-            font-family:Arial;
-            background: linear-gradient(to right,#667eea,#764ba2);
-            text-align:center;
-        }
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-        .login-box{
-            background:white;
-            width:350px;
-            margin:auto;
-            margin-top:120px;
-            padding:30px;
-            border-radius:15px;
-            box-shadow:0 5px 15px rgba(0,0,0,0.3);
-        }
+body{
+font-family:Arial,sans-serif;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#667eea,#764ba2,#00b4d8);
+background-size:300%;
+animation:bgMove 8s ease infinite;
+}
 
-        input{
-            width:90%;
-            padding:12px;
-            margin:10px;
-            border-radius:8px;
-            border:1px solid gray;
-        }
+/* animated background */
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
 
-        button{
-            width:95%;
-            padding:12px;
-            background:#4CAF50;
-            color:white;
-            border:none;
-            border-radius:8px;
-            cursor:pointer;
-        }
+.login-box{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(12px);
+padding:40px;
+width:380px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.25);
+animation:fadeIn 1s ease;
+}
 
-        button:hover{
-            background:#45a049;
-        }
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(30px);}
+to{opacity:1; transform:translateY(0);}
+}
 
-        h1{
-            color:#003366;
-        }
-    </style>
+h1{
+color:white;
+margin-bottom:25px;
+font-size:34px;
+}
+
+p{
+margin-bottom:15px;
+font-size:14px;
+}
+
+input{
+width:100%;
+padding:14px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+outline:none;
+font-size:15px;
+background:rgba(255,255,255,0.9);
+}
+
+input:focus{
+box-shadow:0 0 10px rgba(255,255,255,0.7);
+}
+
+button{
+width:100%;
+padding:14px;
+margin-top:15px;
+border:none;
+border-radius:10px;
+background:#00b894;
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+font-weight:bold;
+}
+
+button:hover{
+background:#009e7a;
+transform:translateY(-2px);
+box-shadow:0 8px 18px rgba(0,0,0,0.25);
+}
+
+.note{
+margin-top:18px;
+color:white;
+font-size:14px;
+opacity:0.9;
+}
+</style>
 </head>
 
 <body>
@@ -55,19 +105,23 @@
 <h1>🔐 Admin Login</h1>
 
 {% if error %}
-<p style="color:red;">{{ error }}</p>
+<p style="color:#ffcccc;">{{ error }}</p>
 {% endif %}
 
 <form method="POST">
 {% csrf_token %}
 
-<input type="text" name="username" placeholder="Enter Username">
+<input type="text" name="username" placeholder="Enter Username" required>
 
-<input type="password" name="password" placeholder="Enter Password">
+<input type="password" name="password" placeholder="Enter Password" required>
 
 <button type="submit">Login</button>
 
 </form>
+
+<div class="note">
+Hospital Management Secure Access
+</div>
 
 </div>
 

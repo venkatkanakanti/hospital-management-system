@@ -1,74 +1,155 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard</title>
-    <style>
-        body {
-            font-family: Arial;
-            background: linear-gradient(to right, #74ebd5, #9face6);
-            text-align: center;
-        }
+<title>Dashboard</title>
 
-        h1 {
-            color: #003366;
-        }
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-        .container {
-            margin-top: 40px;
-        }
+body{
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#74ebd5,#9face6);
+min-height:100vh;
+}
 
-        .card {
-            display: inline-block;
-            background: white;
-            padding: 20px;
-            margin: 15px;
-            border-radius: 12px;
-            width: 200px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
+/* Header */
+.header{
+background:#003366;
+color:white;
+padding:20px;
+font-size:32px;
+font-weight:bold;
+text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
 
-        button {
-            padding: 10px;
-            width: 150px;
-            border: none;
-            border-radius: 6px;
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
-        }
+/* Dashboard area */
+.container{
+padding:40px;
+}
 
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+max-width:1100px;
+margin:auto;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:18px;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+transition:0.4s;
+text-align:center;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.03);
+box-shadow:0 15px 28px rgba(0,0,0,0.25);
+}
+
+.card h2{
+margin-bottom:15px;
+color:#003366;
+}
+
+.card p{
+margin-bottom:18px;
+color:#444;
+font-size:15px;
+}
+
+.btn{
+display:inline-block;
+padding:12px 22px;
+background:#28a745;
+color:white;
+text-decoration:none;
+border-radius:10px;
+font-weight:bold;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#218838;
+transform:scale(1.05);
+}
+
+/* logout */
+.logout{
+text-align:center;
+margin-top:35px;
+}
+
+.logout a{
+background:#dc3545;
+}
+
+.logout a:hover{
+background:#b02a37;
+}
+
+/* footer */
+.footer{
+margin-top:40px;
+padding:18px;
+text-align:center;
+color:#003366;
+font-weight:bold;
+}
+</style>
 </head>
 
 <body>
 
-<h1>🏥 Hospital Management Dashboard</h1>
+<div class="header">
+🏥 Hospital Management Dashboard
+</div>
 
 <div class="container">
 
+<div class="cards">
+
 <div class="card">
-<a href="/add_doctor/"><button>👨‍⚕️ Add Doctor</button></a>
+<h2>👨‍⚕️ Add Doctor</h2>
+<p>Create and manage doctor records.</p>
+<a href="/adddoctor/" class="btn">Open</a>
 </div>
 
 <div class="card">
-<a href="/add_patient/"><button>🧑 Add Patient</button></a>
+<h2>🧑 Add Patient</h2>
+<p>Add new patient details safely.</p>
+<a href="/addpatient/" class="btn">Open</a>
 </div>
 
 <div class="card">
-<a href="/view_doctors/"><button>📋 View Doctors</button></a>
+<h2>📋 View Doctors</h2>
+<p>Check all registered doctors.</p>
+<a href="/viewdoctors/" class="btn">Open</a>
 </div>
 
 <div class="card">
-<a href="/view_patients/"><button>📄 View Patients</button></a>
+<h2>📄 View Patients</h2>
+<p>Check all patient records.</p>
+<a href="/viewpatients/" class="btn">Open</a>
 </div>
 
-<div class="card">
-<a href="/logout/"><button>🚪 Logout</button></a>
 </div>
 
+<div class="logout">
+<a href="/logout/" class="btn">🚪 Logout</a>
+</div>
+
+</div>
+
+<div class="footer">
+Admin Control Panel
 </div>
 
 </body>
