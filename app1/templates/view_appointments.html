@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>View Appointments</title>
+
+<style>
+body{
+font-family:Arial;
+margin:0;
+padding:30px;
+background:linear-gradient(135deg,#74ebd5,#9face6);
+}
+
+h1{
+text-align:center;
+color:#003366;
+margin-bottom:30px;
+}
+
+table{
+width:90%;
+margin:auto;
+border-collapse:collapse;
+background:white;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 10px 20px rgba(0,0,0,0.15);
+}
+
+th,td{
+padding:15px;
+text-align:center;
+border-bottom:1px solid #ddd;
+}
+
+th{
+background:#003366;
+color:white;
+}
+
+tr:hover{
+background:#f2f2f2;
+}
+
+.back{
+display:block;
+width:220px;
+margin:25px auto;
+text-align:center;
+padding:12px;
+background:#28a745;
+color:white;
+text-decoration:none;
+border-radius:10px;
+font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<h1>📅 All Appointments</h1>
+
+<table>
+<tr>
+<th>Patient</th>
+<th>Doctor</th>
+<th>Date</th>
+<th>Time</th>
+</tr>
+
+{% for a in appointments %}
+<tr>
+<td>{{ a.patient_name }}</td>
+<td>{{ a.doctor_name }}</td>
+<td>{{ a.date }}</td>
+<td>{{ a.time }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+<a href="/adminlogin/" class="back">⬅ Back</a>
+
+</body>
+</html>

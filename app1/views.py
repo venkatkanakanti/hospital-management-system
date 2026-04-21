@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from .models import Doctor, Patient
+from .models import Doctor, Patient, Appointment
+
 
 def home(request):
     return render(request, 'home.html')
+
 
 def adminlogin(request):
     if request.method == 'POST':
@@ -15,6 +17,7 @@ def adminlogin(request):
             return render(request, 'adminlogin.html', {'error': 'Invalid Credentials'})
 
     return render(request, 'adminlogin.html')
+
 
 def add_doctor(request):
     if request.method == 'POST':
@@ -34,14 +37,17 @@ def add_doctor(request):
 
     return render(request, 'add_doctor.html')
 
+
 def view_doctors(request):
     doctors = Doctor.objects.all()
     return render(request, 'view_doctors.html', {'doctors': doctors})
+
 
 def delete_doctor(request, id):
     doctor = Doctor.objects.get(id=id)
     doctor.delete()
     return view_doctors(request)
+
 
 def add_patient(request):
     if request.method == 'POST':
@@ -61,9 +67,32 @@ def add_patient(request):
 
     return render(request, 'add_patient.html')
 
+
 def view_patients(request):
     patients = Patient.objects.all()
     return render(request, 'view_patients.html', {'patients': patients})
+
+
+def add_appointment(request):
+    if request.method == 'POST':
+        patient_name = request.POST.get('patient_name')
+        doctor_name = request.POST.get('doctor_name')
+        date = request.POST.get('date')
+        time = request.POST.get('time')
+
+        Appointment.objects.create(
+            patient_name=patient_name,
+            doctor_name=doctor_name,
+            date=date,
+            time=time
+        )
+
+        return render(request, 'add_appointment.html', {
+            'success': 'Appointment Booked Successfully'
+        })
+
+    return render(request, 'add_appointment.html')
+
 
 def logout(request):
     return render(request, 'adminlogin.html')
